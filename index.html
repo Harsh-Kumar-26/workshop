@@ -7,16 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Wrap is main game body -->
   <div class="wrap">
+    <!-- Hud is starting part of game body, contains score, game name -->
     <div class="hud">
       <div class="title">Geometry Dash Lite</div>
       <div class="badge">Score: <span id="score">0</span></div>
     </div>
     <div class="game" id="game">
+      <!-- Player, initially display none -->
       <div id="player"></div>
+      <!-- Obstacle initially display none -->
       <div id="obstacle"></div>
       <div id="ground"></div>
-
+<!-- Class overlay is the layout over the game ie for game start and game over -->
       <div id="startScreen" class="overlay">
     <h2>Geometry Dash Lite</h2>
     <button id="startBtn">Start Game</button>

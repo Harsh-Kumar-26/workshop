@@ -1,13 +1,12 @@
 body {
   margin: 0;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  background: #0a0a0a;
-  color: white;
+  font-family: "Comic Sans MS", cursive;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-image: url("https://static.vecteezy.com/system/resources/previews/025/934/704/large_2x/abstract-neon-light-gaming-background-generated-by-ai-free-photo.jpg");
+  /* bksize= auto,cover(scale the image, may crop), contain(full image fit inside element, may have empty space) */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,30 +15,33 @@ body {
 .wrap {
   width: 800px;
   border: 2px solid #222;
+  /* border style- solid,dashed,none,dotted,double etc */
   border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 25px black;
+  /* bosx-shadow- 25px blur+ black, 0px right and down */
   overflow: hidden;
 }
 
 .hud {
   height: 50px;
-  background: linear-gradient(90deg, #1c1c1c, #222 50%, #1c1c1c);
+  background: rgb(23, 22, 22);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-  box-shadow: inset 0 -2px 5px rgba(0,0,0,0.6);
+  box-shadow: inset 0 -2px 5px black;
+  /* shadow appears inside the block offset-x, y(-ve=> up) blur-radius  */
 }
 
 .title {
   font-weight: bold;
   font-size: 18px;
   letter-spacing: 1px;
-  color: #22d3ee;
+  color: lightblue;
 }
 
 .badge {
-  background: #292929;
+  background: rgb(41, 40, 40);
   padding: 5px 12px;
   border-radius: 10px;
   font-size: 14px;
@@ -50,11 +52,16 @@ body {
   width: 800px;
   height: 400px;
   position: relative;
+  /* positions- static(default), relative(to its own pos) */
+  /* absolute- relative to nearest parent , fixed- fixed in place(rel to vp)*/
+  /* sticky */
   background: linear-gradient(to left, #00111f, #00051a);
   overflow: hidden;
 }
 
 /* Subtle moving stars */
+/* Pseudo-elements=> Virtual content created using css placed wrt to particular element */
+/* Here, pseudo class starts is placed before game */
 .game::before {
   content: "";
   position: absolute;
@@ -79,24 +86,32 @@ body {
   position: absolute;
   bottom: 20px;
   left: 50px;
+  /* transition: property duration time-fxn delay */
+  /* time-fxn- linear, ease in, ease out, ease-in-out */
+  /* cubic-bezier- (t1,x1,t2,x2); -(0,0) mean at 0%,0% and (1,1) means 100%,100% */
+  /*  explanation of last one- starts slow, moves fast and then slows down */
   transition: bottom 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-  box-shadow: 0 0 12px #22d3ee;
+  box-shadow: 0 0 12px lightblue;
 }
 
 #obstacle {
   width: 30px;
   height: 40px;
-  background: #f44336;
+  background: red;
   border-radius: 8px;
   position: absolute;
   bottom: 20px;
   right: 0;
+  /* This animation makes the block move from right to left in every 2.5s */
   animation: move 2.5s linear infinite;
   box-shadow: 0 0 10px #f44336;
 }
-
+/* The @keyframes rule defines a set of styles that an element should go through during an animation.
+U can assume it as a CSS fxx */
 @keyframes move {
+  /* Why right- -40px; since block's already of 30px and 10px acts as buffer */
   from { right: -40px; }
+  /* 800px, game area weidth and 30px length and 20px buffer */
   to { right: 850px; }
 }
 
@@ -106,8 +121,8 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(to right, #0f0, #0c0);
-  border-top: 1px solid #0f0;
+  background: lightgreen;
+  border-top: 1px solid green;
 }
 
 
@@ -117,7 +132,7 @@ body {
   left: 0;
   width: 800px;
   height: 400px;
-  background: rgba(0,0,0,0.88);
+  background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -125,6 +140,8 @@ body {
   color: white;
   font-size: 24px;
   border-radius: 0 0 12px 12px;
+  /* Since this overlay needs to be above the game(even though js has precaution still)
+  we are using z-index to position it above the game */
   z-index: 10;
   background-image: url("https://res.cloudinary.com/dphysyfkt/image/upload/v1756571559/Neon_Video_Game_Controllers_Cluster_cywfp8.png");
   background-size: cover;
@@ -132,7 +149,7 @@ body {
   background-repeat: no-repeat;
 
 }
-
+/* Overlay button styles */
 .overlay button {
   margin-top: 20px;
   padding: 10px 22px;
@@ -140,13 +157,18 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
-  color: #111;
+  background: skyblue;
+  color: black;
   font-weight: bold;
+  /* ease is same as ease-in-out */
+  /* starts slow --> speed up --> again slows down */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .overlay button:hover {
+  /* translateX--> moves right */
+  /* translateY--> moves down */
+  /* Can explain for translate fxn here */
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(34, 211, 238, 0.5);
+  box-shadow: 0 6px 15px skyblue;
 }
