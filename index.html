@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav>
+     <!-- Hud is starting part of game body, contains score, game name -->
+  <div class="hud">
+    <div class="title">Geometry Dash Lite</div>
+    <div class="badge">Score: <span id="score">0</span></div>
+  </div>
+  </nav>
   <!-- Wrap is main game body -->
   <div class="wrap">
-    <!-- Hud is starting part of game body, contains score, game name -->
-    <div class="hud">
-      <div class="title">Geometry Dash Lite</div>
-      <div class="badge">Score: <span id="score">0</span></div>
-    </div>
     <div class="game" id="game">
       <!-- Player, initially display none -->
       <div id="player"></div>
